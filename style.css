@@ -21,11 +21,11 @@ main{
     align-items: center;
     justify-content: center;
     justify-items: center;
-    width: 30%;
-    height: 70%;
+    margin: auto;
 }
 a{
-
+    padding-left: 100px;
+    padding-right: 100px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     margin: 10px;
@@ -33,7 +33,7 @@ a{
     align-items: center;
     justify-content: center;
     justify-items: center;
-    width: 100%;
+    width: 80%;
     height: 50px;
 
 }
@@ -67,8 +67,8 @@ img{
 }
 
 footer{
-    position: absolute ;
-    bottom: 10px;
+    position: relative ;
+    bottom: 0px;
 }
 h2{
     color: #ffffff;

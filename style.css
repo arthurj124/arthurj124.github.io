@@ -93,6 +93,17 @@ h2{
 
     }
     h2{
+        font-size: medium;
         color: #000000;
+    }
+    footer{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        
+        
+        
     }
 }

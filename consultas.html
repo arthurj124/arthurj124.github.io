@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultas</title>
+    <link rel="stylesheet" href="css/consultas-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <button class="btn-voltar" onclick="voltarPagina()">
+  <i class="fas fa-arrow-left"></i>
+</button>
+
+    <div class="card">
+      <div class="header">
+        <h2>Consultas</h2>
+        <button id="addBtn" class="add-btn">
+          <i class="fas fa-plus"></i> Adicionar Consulta
+        </button>
+      </div>
+
+      <div id="listaConsultas" class="lista-consultas"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalTitle">Nova Consulta</h3>
+
+        <label>Nome da consulta*</label>
+        <input type="text" id="nome" placeholder="Ex: Cardiologista" />
+
+        <label>Motivo (opcional)</label>
+        <input type="text" id="motivo" placeholder="Ex: Dor no peito" />
+
+        <div class="datas">
+          <div>
+            <label>Data</label>
+            <input type="date" id="data" />
+          </div>
+          <div>
+            <label>Hora</label>
+            <!-- já em formato time, sem script inline -->
+            <input type="time" id="hora" />
+          </div>
+        </div>
+
+        <label>Local (opcional)</label>
+        <input type="text" id="local" placeholder="Ex: Hospital São João" />
+
+        <div class="botoes-modal">
+          <button id="salvarBtn" class="btn salvar">Salvar</button>
+          <button id="cancelarBtn" class="btn cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+    <script src="js/consultas-script.js"></script>
+  </body>
+</html>

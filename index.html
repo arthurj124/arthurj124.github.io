@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h2>Área da Saúde</h2>
+
+      <!-- Botões iniciais -->
+      <div id="mainButtons" class="main-buttons">
+        <button class="login-btn" onclick="showLogin()">Login</button>
+        <button class="register-btn" onclick="showRegister()">Cadastrar</button>
+      </div>
+
+      <!-- Login -->
+      <div id="loginForm" class="form-section">
+        <input type="email" id="loginEmail" placeholder="Email" />
+        <input type="password" id="loginPassword" placeholder="Senha" />
+        <button class="login-btn" onclick="login()">Entrar</button>
+        <button class="back-btn" onclick="showMain()">Voltar</button>
+      </div>
+
+      <!-- Cadastro -->
+      <div id="registerForm" class="form-section">
+        <input type="text" id="firstName" placeholder="Nome" />
+        <input type="text" id="lastName" placeholder="Sobrenome" />
+        <input type="email" id="registerEmail" placeholder="Email" />
+        <input type="password" id="registerPassword" placeholder="Senha" />
+        <button class="register-btn" onclick="register()">Cadastrar</button>
+        <button class="back-btn" onclick="showMain()">Voltar</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

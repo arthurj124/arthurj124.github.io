@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Área da Saúde</title>
+    <link rel="stylesheet" href="css/menu_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="card">
+      <h2>Menu</h2>
+      <p id="userEmail" class="user-info"></p>
+
+      <div class="menu-buttons">
+        <a href="medicamentos.html" class="menu-btn">
+          <i class="fas fa-pills"></i>
+          <span>Medicamentos</span>
+        </a>
+        <a href="consultas.html" class="menu-btn">
+          <i class="fas fa-calendar-check"></i>
+          <span>Consultas</span>
+        </a>
+        <a href="documentos.html" class="menu-btn">
+          <i class="fas fa-file-alt"></i>
+          <span>Documentos</span>
+        </a>
+        <a href="relatorios.html" class="menu-btn">
+          <i class="fas fa-chart-line"></i>
+          <span>Relatórios</span>
+        </a>
+      </div>
+
+      <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+    <script>
+      // Garante que o usuário está logado
+      window.addEventListener("load", async () => {
+        const user = await checkSession(); // vem do main.js
+        if (user) {
+          document.getElementById("userEmail").textContent =
+            "Logado como: " + user.email;
+        }
+      });
+    </script>
+  </body>
+</html>

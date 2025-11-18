@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="css/relatorios-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <button class="btn-voltar" onclick="voltarPagina()">
+  <i class="fas fa-arrow-left"></i>
+</button>
+
+    <div class="card">
+      <div class="header">
+        <h2>Relatórios</h2>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="filtros">
+        <div class="filtro-linha">
+          <div class="filtro-item">
+            <label for="filtroDataInicio">Data inicial</label>
+            <input type="date" id="filtroDataInicio" />
+          </div>
+          <div class="filtro-item">
+            <label for="filtroDataFim">Data final</label>
+            <input type="date" id="filtroDataFim" />
+          </div>
+        </div>
+
+        <div class="filtro-linha">
+          <div class="filtro-item checkbox">
+            <label>
+              <input type="checkbox" id="filtroConsultas" checked />
+              Consultas
+            </label>
+          </div>
+          <div class="filtro-item checkbox">
+            <label>
+              <input type="checkbox" id="filtroMedicamentos" checked />
+              Medicamentos
+            </label>
+          </div>
+          <div class="filtro-item checkbox">
+            <label>
+              <input type="checkbox" id="filtroDocumentos" checked />
+              Documentos
+            </label>
+          </div>
+        </div>
+
+        <div class="filtro-linha">
+          <button id="aplicarFiltrosBtn" class="btn salvar">
+            Aplicar filtros
+          </button>
+        </div>
+      </div>
+
+      <!-- CARDS RESUMO -->
+      <div id="cardsResumo" class="cards-resumo"></div>
+
+      <!-- SEÇÃO CONSULTAS -->
+      <div id="secaoConsultas" class="secao">
+        <h3>Consultas no período</h3>
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Nome</th>
+                <th>Motivo</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaConsultasBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SEÇÃO MEDICAMENTOS -->
+      <div id="secaoMedicamentos" class="secao">
+        <h3>Medicamentos no período</h3>
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Consulta</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Dosagem</th>
+                <th>Em uso hoje?</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaMedicamentosBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SEÇÃO DOCUMENTOS -->
+      <div id="secaoDocumentos" class="secao">
+        <h3>Documentos no período</h3>
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Consulta</th>
+                <th>Medicamento</th>
+                <th>Criado em</th>
+                <th>Arquivos</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaDocumentosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supabase + app -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+    <script src="js/relatorios-script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicamentos</title>
+    <link rel="stylesheet" href="css/medicamentos-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <button class="btn-voltar" onclick="voltarPagina()">
+  <i class="fas fa-arrow-left"></i>
+</button>
+
+    <div class="card">
+      <div class="header">
+        <h2>Medicamentos</h2>
+        <button id="addMedicamentoBtn" class="add-btn">
+          <i class="fas fa-plus"></i> Adicionar Medicamento
+        </button>
+      </div>
+
+      <div id="listaMedicamentos" class="lista-medicamentos"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalMedicamento" class="modal">
+      <div class="modal-content">
+        <h3 id="modalTitleMedicamento">Novo Medicamento</h3>
+
+        <label>Nome do remédio*</label>
+        <input type="text" id="nomeMedicamento" placeholder="Ex: Paracetamol" />
+
+        <label>Motivo (opcional)</label>
+        <input
+          type="text"
+          id="motivoMedicamento"
+          placeholder="Ex: Dor de cabeça"
+        />
+
+        <label>Consulta relacionada</label>
+        <select id="consultaMedicamento">
+          <option value="">Selecione...</option>
+        </select>
+
+        <div class="datas">
+          <div>
+            <label>Data de início</label>
+            <input type="date" id="inicioMedicamento" />
+          </div>
+          <div>
+            <label>Data de fim</label>
+            <input type="date" id="fimMedicamento" />
+          </div>
+        </div>
+
+        <label>Dosagem (opcional)</label>
+        <input type="text" id="dosagemMedicamento" placeholder="Ex: 500mg" />
+
+        <label>Observações (opcional)</label>
+        <input
+          type="text"
+          id="observacoesMedicamento"
+          placeholder="Ex: Tomar após refeição"
+        />
+
+        <label>Imagem (opcional)</label>
+        <input type="file" id="imagemMedicamento" accept="image/*" />
+
+        <!-- Preview da imagem -->
+        <div class="imagem-preview">
+          <img
+            id="previewImagemMedicamento"
+            alt="Pré-visualização do medicamento"
+            style="
+              display: none;
+              max-width: 120px;
+              max-height: 120px;
+              border-radius: 8px;
+              margin-top: 8px;
+            "
+          />
+        </div>
+
+        <div class="botoes-modal">
+          <button id="salvarMedicamentoBtn" class="btn salvar">Salvar</button>
+          <button id="cancelarMedicamentoBtn" class="btn cancelar">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supabase + app -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/main.js"></script>
+    <script src="js/medicamentos-script.js"></script>
+  </body>
+</html>

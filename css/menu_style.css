@@ -1,0 +1,171 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== FUNDO GRADIENTE ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #4caf50, #2196f3);
+}
+
+/* ===== CARD DO MENU ===== */
+.card {
+  background: white;
+  width: 100%;
+  max-width: 380px;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* Título */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* ===== BOTÕES DO MENU ===== */
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Estilo base */
+.menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.25s ease;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Cores por botão */
+.menu-btn:nth-child(1) {
+  background-color: #2196f3;
+}
+.menu-btn:nth-child(2) {
+  background-color: #4caf50;
+}
+.menu-btn:nth-child(3) {
+  background-color: #ff9800;
+}
+.menu-btn:nth-child(4) {
+  background-color: #9c27b0;
+}
+
+/* Ícone */
+.menu-btn i {
+  font-size: 24px;
+}
+
+/* Hover */
+.menu-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* Active (click) */
+.menu-btn:active {
+  opacity: 0.75;
+  transform: scale(0.97);
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.btn-voltar {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff;
+  color: #1c274c;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-voltar:hover {
+  background: #f0f2ff;
+  transform: scale(1.05);
+}
+
+.btn-voltar:active {
+  transform: scale(0.93);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Telas médias (tablets pequenos) */
+@media (max-width: 768px) {
+  .card {
+    max-width: 360px;
+    padding: 24px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Celular normal */
+@media (max-width: 480px) {
+  body {
+    padding: 14px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .menu-btn {
+    font-size: 0.95rem;
+    padding: 12px 18px;
+  }
+
+  .menu-btn i {
+    font-size: 22px;
+  }
+}
+
+/* Celular muito pequeno (tipo 320px largura) */
+@media (max-width: 360px) {
+  .card {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  .menu-btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}

@@ -31,7 +31,7 @@ async function login() {
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
-    alert("Erro ao fazer login: " + error.message);
+    alert("Erro ao fazer login: Credenciais inválidas!!") // + error.message);
     return;
   }
 

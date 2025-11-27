@@ -47,13 +47,14 @@
       window.addEventListener("load", async () => {
         const user = await checkSession(); // vem do main.js
         if (user) {
-          document.getElementById("userEmail").textContent =
-            "Logado como: " + user.email;
+          document.getElementById("firstName").textContent =
+            "Logado como: " + user.nome;
         }
       });
     </script>
   </body>
 </html>
+
 
 
 

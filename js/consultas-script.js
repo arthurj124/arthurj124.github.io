@@ -186,14 +186,24 @@ function editar(id) {
 }
 
 async function remover(id) {
-  if (confirm("Remover esta consulta?")) {
-    const { error } = await supabase.from("consultas").delete().eq("id", id);
-    if (error) {
-      alert("Erro ao remover consulta.");
-      console.error(error);
+  if (!confirm("Remover esta consulta?")) return;
+
+  const { error } = await supabase.from("consultas").delete().eq("id", id);
+
+  if (error) {
+    console.error("Erro ao remover consulta:", error);
+
+    // 23503 = violação de foreign key (há registros dependentes em outra tabela)
+    if (error.code === "23503") {
+      alert(
+        "Esta consulta não pode ser removida porque existe pelo menos um registro vinculado a ela (por exemplo, medicamentos ou documentos).\n\n" +
+          "Remova primeiro os registros relacionados a esta consulta e tente novamente."
+      );
     } else {
-      await carregarConsultas();
+      alert("Erro ao remover consulta.");
     }
+  } else {
+    await carregarConsultas();
   }
 }
 

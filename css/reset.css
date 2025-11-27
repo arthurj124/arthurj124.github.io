@@ -1,0 +1,128 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== FUNDO GRADIENTE ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #4caf50, #2196f3);
+}
+
+/* ===== CARD CENTRAL ===== */
+.card {
+  background: white;
+  padding: 26px 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 16px;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+/* ===== CAMPOS ===== */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+/* botão principal (salvar nova senha) */
+button.login-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Voltar / ações secundárias */
+button.back-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== MENSAGENS ===== */
+#resetSuccessMsg {
+  color: #2e7d32;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#resetErrorMsg {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 22px 18px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    padding: 18px 14px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  input {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 13px;
+  }
+}

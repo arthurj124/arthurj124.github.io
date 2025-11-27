@@ -3,13 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../img/faviconv.png">
+    <link rel="icon" type="image/png" href="../img/faviconv.png" />
     <title>Vitacare</title>
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <div class="card">
-      <center><img src="../img/logo_sem_fundo.png" style="max-width: 100%; height: auto;" alt="Logo VITACARE"></center>
+      <center>
+        <img
+          src="../img/logo_sem_fundo.png"
+          style="max-width: 100%; height: auto"
+          alt="Logo VITACARE"
+        />
+      </center>
       <h2>VITACARE</h2>
       <h5>Gerencimento de saúde pessoal</h5>
       <p></p>
@@ -21,15 +27,34 @@
       </div>
 
       <!-- Login -->
-      <div id="loginForm" class="form-section">
+      <div id="loginForm" class="form-section" style="display: none">
         <input type="email" id="loginEmail" placeholder="Email" />
         <input type="password" id="loginPassword" placeholder="Senha" />
+
         <button class="login-btn" onclick="login()">Entrar</button>
+
+        <!-- NOVO: link de esqueci a senha -->
+        <button
+          type="button"
+          class="link-btn"
+          style="
+            background: none;
+            border: none;
+            color: #007bff;
+            margin-top: 8px;
+            cursor: pointer;
+            text-decoration: underline;
+          "
+          onclick="showForgotPassword()"
+        >
+          Esqueci minha senha
+        </button>
+
         <button class="back-btn" onclick="showMain()">Voltar</button>
       </div>
 
       <!-- Cadastro -->
-      <div id="registerForm" class="form-section">
+      <div id="registerForm" class="form-section" style="display: none">
         <input type="text" id="firstName" placeholder="Nome" />
         <input type="text" id="lastName" placeholder="Sobrenome" />
         <input type="email" id="registerEmail" placeholder="Email" />
@@ -37,10 +62,37 @@
         <button class="register-btn" onclick="register()">Cadastrar</button>
         <button class="back-btn" onclick="showMain()">Voltar</button>
       </div>
+
+      <!-- NOVO: Esqueci minha senha -->
+      <div id="forgotPasswordForm" class="form-section" style="display: none">
+        <p>
+          Digite o e-mail cadastrado para enviarmos o link de redefinição de
+          senha.
+        </p>
+        <input type="email" id="forgotEmail" placeholder="Seu e-mail" />
+
+        <button class="login-btn" onclick="sendResetPasswordEmail()">
+          Enviar link
+        </button>
+        <button class="back-btn" onclick="showLogin()">Voltar ao login</button>
+
+        <!-- mensagens de feedback -->
+        <p
+          id="forgotSuccessMsg"
+          style="color: green; display: none; margin-top: 8px"
+        ></p>
+        <p
+          id="forgotErrorMsg"
+          style="color: red; display: none; margin-top: 8px"
+        ></p>
+      </div>
     </div>
 
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Inicialização global -->
     <script src="js/main.js"></script>
+    <!-- Lógica da tela de login/cadastro/esqueci senha -->
     <script src="js/index.js"></script>
   </body>
 </html>

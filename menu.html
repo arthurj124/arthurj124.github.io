@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../img/faviconv.png">
-    <title>Vitacare</title>
+    <title>Menu Área da Saúde</title>
     <link rel="stylesheet" href="css/menu_style.css" />
     <link
       rel="stylesheet"
@@ -14,7 +13,7 @@
   <body>
     <div class="card">
       <h2>Menu</h2>
-      <p id="firstName" class="user-info"></p>
+      <p id="userEmail" class="user-info"></p>
 
       <div class="menu-buttons">
         <a href="medicamentos.html" class="menu-btn">
@@ -47,16 +46,10 @@
       window.addEventListener("load", async () => {
         const user = await checkSession(); // vem do main.js
         if (user) {
-          document.getElementById("firstName").textContent =
-            "Logado como: " + user.firstName;
+          document.getElementById("userEmail").textContent =
+            "Logado como: " + user.email;
         }
       });
     </script>
   </body>
 </html>
-
-
-
-
-
-

@@ -1,22 +1,31 @@
 // ======== index.js ========
 // Controle da tela inicial (login, cadastro e esqueci senha)
 
+console.log("index.js carregado 👍");
+
 // Helpers para mostrar/esconder seções
 function hideAllSections() {
-  document.getElementById("mainButtons").style.display = "none";
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("registerForm").style.display = "none";
-  document.getElementById("forgotPasswordForm").style.display = "none";
+  const mainButtons = document.getElementById("mainButtons");
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const forgotForm = document.getElementById("forgotPasswordForm");
+
+  if (mainButtons) mainButtons.style.display = "none";
+  if (loginForm) loginForm.style.display = "none";
+  if (registerForm) registerForm.style.display = "none";
+  if (forgotForm) forgotForm.style.display = "none";
 }
 
 function showMain() {
   hideAllSections();
-  document.getElementById("mainButtons").style.display = "block";
+  const mainButtons = document.getElementById("mainButtons");
+  if (mainButtons) mainButtons.style.display = "block";
 }
 
 function showLogin() {
   hideAllSections();
-  document.getElementById("loginForm").style.display = "block";
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) loginForm.style.display = "block";
 
   // limpar mensagens do esqueci senha se tiver vindo de lá
   const successMsg = document.getElementById("forgotSuccessMsg");
@@ -27,12 +36,14 @@ function showLogin() {
 
 function showRegister() {
   hideAllSections();
-  document.getElementById("registerForm").style.display = "block";
+  const registerForm = document.getElementById("registerForm");
+  if (registerForm) registerForm.style.display = "block";
 }
 
 function showForgotPassword() {
   hideAllSections();
-  document.getElementById("forgotPasswordForm").style.display = "block";
+  const forgotForm = document.getElementById("forgotPasswordForm");
+  if (forgotForm) forgotForm.style.display = "block";
 
   // limpar campos e mensagens
   const forgotEmail = document.getElementById("forgotEmail");
@@ -52,13 +63,37 @@ function showForgotPassword() {
 
 // Deixa a tela principal aparecendo ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded em index.html, hash:", window.location.hash);
+
+  // Se veio de um link de recuperação do Supabase (reset de senha)
+  if (
+    window.location.hash.includes("type=recovery") ||
+    window.location.hash.includes("access_token")
+  ) {
+    console.log(
+      "Detectado link de recuperação, redirecionando para reset-password.html"
+    );
+    // Redireciona para a página de reset, preservando o token no hash
+    window.location.href = "reset-password.html" + window.location.hash;
+    return;
+  }
+
+  // Fluxo normal: tela de login/cadastro
   showMain();
 });
 
 // ======== Autenticação: Login ========
 async function login() {
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value;
+  const emailInput = document.getElementById("loginEmail");
+  const passwordInput = document.getElementById("loginPassword");
+
+  if (!emailInput || !passwordInput) {
+    alert("Erro interno: campos de login não encontrados.");
+    return;
+  }
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
 
   if (!email || !password) {
     alert("Preencha email e senha.");
@@ -78,7 +113,6 @@ async function login() {
     }
 
     // Login ok → manda pra página principal do sistema
-    // ajuste o caminho se seu menu estiver em outro arquivo
     window.location.href = "menu.html";
   } catch (err) {
     console.error("Erro inesperado no login:", err);
@@ -88,10 +122,20 @@ async function login() {
 
 // ======== Autenticação: Cadastro ========
 async function register() {
-  const firstName = document.getElementById("firstName").value.trim();
-  const lastName = document.getElementById("lastName").value.trim();
-  const email = document.getElementById("registerEmail").value.trim();
-  const password = document.getElementById("registerPassword").value;
+  const firstNameInput = document.getElementById("firstName");
+  const lastNameInput = document.getElementById("lastName");
+  const emailInput = document.getElementById("registerEmail");
+  const passwordInput = document.getElementById("registerPassword");
+
+  if (!firstNameInput || !lastNameInput || !emailInput || !passwordInput) {
+    alert("Erro interno: campos de cadastro não encontrados.");
+    return;
+  }
+
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
 
   if (!firstName || !lastName || !email || !password) {
     alert("Preencha todos os campos para cadastrar.");
@@ -126,9 +170,16 @@ async function register() {
 
 // ======== Esqueci minha senha (reset via e-mail Supabase) ========
 async function sendResetPasswordEmail() {
-  const email = document.getElementById("forgotEmail").value.trim();
+  const emailInput = document.getElementById("forgotEmail");
   const successMsg = document.getElementById("forgotSuccessMsg");
   const errorMsg = document.getElementById("forgotErrorMsg");
+
+  if (!emailInput) {
+    alert("Erro interno: campo de e-mail não encontrado.");
+    return;
+  }
+
+  const email = emailInput.value.trim();
 
   if (!email) {
     if (errorMsg) {
@@ -152,12 +203,8 @@ async function sendResetPasswordEmail() {
 
   try {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      // URL de redirecionamento após o usuário clicar no link do e-mail
-      // Ajuste esse caminho conforme onde ficará sua página de redefinição de senha.
-      redirectTo: `${window.location.origin}/reset-password.html`,
-      // Exemplo:
-      // - se você servir em http://localhost:5500/pages/index.html → redirectTo = http://localhost:5500/pages/reset-password.html
-      // - se estiver em produção, ajuste para a URL do seu site.
+      // URL fixa do GitHub Pages para reset de senha
+      redirectTo: "https://arthurj124.github.io/reset-password.html",
     });
 
     if (error) {
@@ -191,3 +238,12 @@ async function sendResetPasswordEmail() {
     }
   }
 }
+
+// ======== Expor funções no escopo global (para onclick="...") ========
+window.showMain = showMain;
+window.showLogin = showLogin;
+window.showRegister = showRegister;
+window.showForgotPassword = showForgotPassword;
+window.login = login;
+window.register = register;
+window.sendResetPasswordEmail = sendResetPasswordEmail;

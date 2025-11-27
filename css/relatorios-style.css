@@ -18,7 +18,6 @@ body {
 }
 
 body {
-  background: #f4f6fb;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -328,4 +327,5 @@ tbody td {
     font-size: 0.78rem;
   }
 }
+
 

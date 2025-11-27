@@ -292,8 +292,10 @@ function editarMedicamento(id) {
   abrirModalMedicamento("Editar Medicamento");
 }
 
+// ======== REMOVER (com mensagem específica para doc vinculado) ========
 async function removerMedicamento(id) {
   if (!confirm("Remover este medicamento?")) return;
+
   const { error } = await supabase
     .from("medicamentos")
     .delete()
@@ -302,7 +304,16 @@ async function removerMedicamento(id) {
 
   if (error) {
     console.error("Erro ao remover medicamento:", error);
-    alert("Erro ao remover medicamento.");
+
+    // Código 23503 = violação de foreign key (registros dependentes em outra tabela)
+    if (error.code === "23503") {
+      alert(
+        "Este medicamento não pode ser removido porque existe pelo menos um documento vinculado a ele.\n\n" +
+        "Remova primeiro os documentos relacionados a este medicamento na tela de Documentos e tente novamente."
+      );
+    } else {
+      alert("Erro ao remover medicamento.");
+    }
   } else {
     await carregarMedicamentos();
   }

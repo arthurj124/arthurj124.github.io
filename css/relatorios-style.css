@@ -7,6 +7,16 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/* ===== FUNDO ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #4caf50, #2196f3);
+}
+
 body {
   background: #f4f6fb;
   min-height: 100vh;
@@ -318,3 +328,4 @@ tbody td {
     font-size: 0.78rem;
   }
 }
+

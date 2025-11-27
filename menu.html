@@ -48,12 +48,13 @@
         const user = await checkSession(); // vem do main.js
         if (user) {
           document.getElementById("firstName").textContent =
-            "Logado como: " + user.nome;
+            "Logado como: " + user.firstName;
         }
       });
     </script>
   </body>
 </html>
+
 
 
 

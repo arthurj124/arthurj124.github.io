@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #f4f6fb;
+  background: linear-gradient(135deg, #4caf50, #2196f3);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -318,3 +318,4 @@ tbody td {
     font-size: 0.78rem;
   }
 }
+

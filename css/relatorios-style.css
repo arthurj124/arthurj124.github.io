@@ -8,13 +8,13 @@
 }
 
 body {
-  background: linear-gradient(135deg, #4caf50, #2196f3);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 16px;
   color: #333;
+  background: linear-gradient(135deg, #4caf50, #2196f3);
 }
 
 /* ===== CARD PRINCIPAL ===== */
@@ -318,4 +318,5 @@ tbody td {
     font-size: 0.78rem;
   }
 }
+
 
